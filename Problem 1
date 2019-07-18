@@ -1,0 +1,24 @@
+// Time Complexity : O(n)
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
+
+class Solution {
+    public int maxArea(int[] height) {
+        int start =0;
+        int end = height.length-1;
+        int max = Integer.MIN_VALUE;
+        
+        while(start<end)
+        {
+            int width = Math.min(height[start],height[end]);//find height by choosing the min of start and end indices
+            int area = width * (end-start);//width by diff of indices
+            max = Math.max(max,area);
+            if(height[start]<height[end]) //increment start if height[start]<height[end]             
+                start++;
+            else
+                end--;               
+        }
+        return max;
+    }
+}
